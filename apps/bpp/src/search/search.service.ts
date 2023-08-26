@@ -1,7 +1,7 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { lastValueFrom } from 'rxjs';
-import { requestForwarder } from 'utils/utils';
+import { requestData, requestForwarder } from 'utils/utils';
 import { createAuthorizationHeader } from '../utils/authBuilder';
 import { SearchDTO } from './dto/search.dto';
 
@@ -13,12 +13,12 @@ export class SearchService {
     // TODO: Validate the search request
     // TODO: Figure out how to get the list of all onboarded providers (env vars or something else?)
 
-    let searchResponse: any = await requestForwarder(
-      process.env.MOCK_API_URI,
-      searchDto,
-      this.httpService,
-    );
-    searchResponse = searchResponse.data;
+    // let searchResponse: any = await requestForwarder(
+    //   process.env.MOCK_API_URI,
+    //   searchDto,
+    //   this.httpService,
+    // );
+    const searchResponse = requestData;
     console.log('search response: ', searchResponse);
     // add BPP ID and BPP URI in the context here
     searchResponse.context.action = 'on_search';

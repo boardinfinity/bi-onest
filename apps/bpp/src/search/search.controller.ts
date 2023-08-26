@@ -25,8 +25,8 @@ export default class SearchController {
   ) {
     searchDto.context.domain = 'dsep:courses';
     searchDto.context.action = 'search';
-    searchDto.context.bpp_id = 'bpp.dsep.samagra.io';
-    searchDto.context.bpp_uri = 'https://bpp.dsep.samagra.io';
+    searchDto.context.bpp_id = 'bpp-boardinfinity'; // Registry name
+    searchDto.context.bpp_uri = 'https://8c93-103-181-177-163.ngrok-free.app';
     sendAcknowledgement(res, 'ACK');
     return this.searchService.handleSearch(searchDto);
   }
